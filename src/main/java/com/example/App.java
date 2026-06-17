@@ -15,15 +15,17 @@ public class App {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
 
+        // IMPORTANT: forces Selenium Manager usage
+        options.setBrowserVersion("stable");
+
         WebDriver driver = new ChromeDriver(options);
 
         driver.get("https://www.saucedemo.com");
-        driver.manage().window().maximize();
 
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
-        driver.quit();   // important (prevents “auto close issue” later)
+        driver.quit();
     }
 }
